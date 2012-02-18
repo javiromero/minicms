@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}{{ object.titulo|capfirst }} | {{ block.super }}{% endblock %}
+{% block nombre %}{{ object.titulo|capfirst }}{% endblock %}
+{% block contenido %}
+<div id="content">
+    <div id="contact-view">
+        <h1 class="titulo">{{ object.titulo|capfirst }}</h1>
+        {% autoescape off %}
+            {{ object.contenido }}
+        {% endautoescape %}
+        <br><br><br>
+    </div>
+</div>
+{% endblock %}
+{% block extrahead %}{% endblock %}
+{% block metakeywords %}{% for i in metas %}{{ i.palabras_clave }}{% endfor %}{% endblock %}
+{% block metadescription %}{% for i in metas %}{{ i.descripcion }}{% endfor %}{% endblock %}
+{% block metarobots %}{% for i in metas %}{{ i.get_robots_display }}{% endfor %}{% endblock %}

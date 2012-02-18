@@ -1,1 +1,22 @@
 Really simple cms to create landing pages
+
+There are two sample settings files included:
+    * one for the main minicms project
+    * one for the plantillas or 'templates' project
+
+This project aims at creating several landing pages reusing minicms main application,
+so you can create several sites, configure some contact data, analytics codes, colors,
+home page, some additional pages (no levels or hierachies) and serve them.
+
+You can also create a copy from the plantillas folder and customize the templates used
+for the pages. It will reuse minicms code to resolve urls, views, models and admin.
+
+The project has the following dependencies:
+
+    * django=1.3.1
+    * south=0.7.3
+    * sorl-thumbnail
+
+You can satisfy them using
+
+    pip install -r requirements.txt

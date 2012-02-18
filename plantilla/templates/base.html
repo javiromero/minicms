@@ -1,0 +1,48 @@
+{% load i18n %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="{{ LANGUAGE_CODE }}" xml:lang="{{ LANGUAGE_CODE }}" {% if LANGUAGE_BIDI %}dir="rtl"{% endif %}>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+        <meta name="language" content="English"></meta>
+        <title>{% block title %}Míweb.es{% endblock %}</title>
+        <meta name="author" content="Sempatiza" />
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/miwebstyle.css" type="text/css" />
+        <link rel="icon" type="image/x-icon" href="{{ STATIC_URL }}img/favicon.ico" />
+        <meta name="keywords" content="{% block metakeywords %}{% endblock %}" />
+        <meta name="description" content="{% block metadescription %}{% endblock %}" />
+        <meta name="robots" content="{% block metarobots %}index,follow{% endblock %}" />
+        <meta name="google-site-verification" content="{% get_conf_list %}{% for item in conf_list %}{{ item.verificacion_webmaster|safe }}{% empty %}{% endfor %}" />
+        <style type="text/css">
+            h1 span, .orange { color: {% for item in conf_list %}{{ item.color_principal|safe }}{% empty %}{% endfor %}; }
+            #logo-conner { background-color: {% for item in conf_list %}{{ item.color_principal|safe }}{% empty %}{% endfor %}; }
+            #contact-form input.btn-sentcontact { background: {% for item in conf_list %}{{ item.color_secundario|safe }}{% empty %}{% endfor %}; }
+        </style>
+        {% block extrastyle %}{% endblock %}
+        {% block extrahead %}{% endblock %}
+    </head>
+    <body>
+        <div id="pagebody">
+            <div id="portal-header">
+                <div id="contact-mail">
+                {% if user.is_authenticated and user.is_staff %}
+                <span id="user-info">{% trans 'Welcome,' %} <strong>{% if user.first_name %}{{ user.first_name|escape }}{% else %}{{ user.username }}{% endif %}</strong> &rarr; <a href="/admin/">{% trans 'Admin' %}</a> / <a href="/accounts/logout/">{% trans 'Log out' %}</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                {% endif %}
+                {% if user.is_authenticated and not user.is_staff %}
+                <span id="user-info">{% trans 'Welcome,' %} <strong>{% if user.first_name %}{{ user.first_name|escape }}{% else %}{{ user.username }}{% endif %}</strong> &rarr; <a href="/accounts/logout/">{% trans 'Log out' %}</a></span>&nbsp;&nbsp;&nbsp;&nbsp;
+                {% endif %}
+                    <span>Infórmate</span><span id="contactnum">{% for item in conf_list %}{{ item.telefono }}{% endfor %}</span>
+                </div>
+                <div id="logo">
+                    <a href="/" title="{% block title_home %}{% endblock %}"><img src="{% for item in conf_list %}{{ item.logo.url }}{% endfor %}" alt="{% block alt_logo %}{% endblock %}" width="" height=""/></a>
+                    <div id="logo-conner">
+                        <p>{% block nombre %}{% endblock %}</p>
+                    </div>
+                </div>
+                <div class="clear-all"></div>
+            </div>
+
+            {# Portada #}
+            {% block contenido %}
+                Algo va mal
+            {% endblock %}
+            {% include "pie.html" %}

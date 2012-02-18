@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}{{ items.titulo }} | {{ block.super }}{% endblock %}
+{% block title_home %}{{ items.titulo }}{% endblock %}
+{% block alt_logo %}{{ items.titulo }}{% endblock %}
+{% block nombre %}{{ items.titulo }}{% endblock %}
+{% block contenido %}
+
+    <div id="content">
+                <img src="{{ items.imagen_cabecera.url }}" alt="Hotel Juan Carlos" width="940" height="365">
+                <div id="contact-view">
+                    {% autoescape off %}
+                    {{ items.destacado }}
+                    {% endautoescape %}
+                
+                    <div class="widget1">
+                        <br><br><br>
+                        <div class="precios-top">
+                            <div class="precios-down">
+                                <div class="precios">
+                                    <h2>Nuestros precios</h2>
+                                    {{ items.precios|safe }}
+                                </div>
+                            </div>
+                        </div>
+                        <br><br>
+                    </div> <!-- END .widget1 -->
+
+                    <div class="widget-contact">
+                        <br><br><br>
+                        <div id="contact-form-top">
+                            <div id="contact-form-down">
+                                <div id="contact-form">
+                                    <div class="contento-thank-form">
+                                        <form method="post" action="http://www.thinkmonkeys.com/sendemailHotel" id="sendemail" name="sendemail">
+                                            <p class="orange">¿Quieres reservar una habitación?</p>
+                                            <input type="text" id="name" name="name" value="Nombre" class="inpForm" onfocus="clearTextName(this)" onblur="setTextName(this)">
+                                            <input type="text" id="email" name="email" value="Email" class="inpForm" onfocus="clearTextEmail(this)" onblur="setTextEmail(this)">
+                                            <input type="text" id="subject" name="subject" value="Teléfono" class="inpForm" onfocus="clearTextPhone(this)" onblur="setTextPhone(this)">
+                                            <input type="button" value="Solicitar mi Reserva" class="btn-sentcontact" onclick="_gaq.push(['_trackEvent', 'Contacto', 'Enviado',,, false]);">
+                                            <div id="chkbox" style="display:block;float:right;">
+                                                <input type="checkbox" id="checkagree" name="checkagree" value="He leido Aviso Legal">
+                                                <span>&nbsp; He leído el </span><span><a href="/aviso-legal/" class="orange">Aviso Legal</a></span>
+                                            </div>
+                                            <input type="hidden" name="thisURL" id="thisURL" value="http://hoteljuancarlos-torrevieja.míweb.es">
+                                            <input type="hidden" name="sandtowho" id="sandtowho" value="steve@thinkmonkeys.com">
+                                        </form>
+                                    </div> <!-- END .contento-thank-form -->
+
+                                    <div class="clear-all"></div>
+
+                                    <div class="contento-thank-text" style="display: none; ">
+                                        <a name="#gracias" id="gracias" title="gracias"><h2 class="title-big">¡Gracias por su <br>confianza! </h2></a>
+                                        <div class="formu-txt">
+                                            <p>Su consulta ha sido recibida. En breve nos pondremos en contacto con usted</p>
+                                        </div>
+                                    </div> <!-- END .contento-thank-text -->
+                                </div> <!-- END #contact-form -->
+                            </div> <!-- END #contact-form-down -->
+                        </div> <!-- END #contact-form-top -->
+                        <br><br>
+                    </div> <!-- END .widget-contact -->
+
+                    <div class="clear-all"></div>
+
+                <div class="widget1">
+                    <div class="info1">
+                        {% autoescape off %}
+                            {% autoescape off %}
+                                {{ items.contenido1 }}
+                                {{ items.contenido2 }}
+                            {% endautoescape %}
+                        {% endautoescape %}
+                    </div>
+                </div> <!-- END .widget1 -->
+                <div class="widget2">
+                    <div class="info2">
+                        {% autoescape off %}
+                            {% autoescape off %}
+                                {{ items.contenido3 }}
+                                {{ items.contenido4 }}
+                            {% endautoescape %}
+                        {% endautoescape %}
+                        <h2>¿Dónde estamos?</h2>
+                        <p>{% for item in conf_list %}{{ item.direccion|safe }}{% empty %}{% endfor %}<br>
+                        CP: {% for item in conf_list %}{{ item.codigo_postal|safe }}{% empty %}{% endfor %}, {% for item in conf_list %}{{ item.ciudad|safe }}{% empty %}{% endfor %}<br>
+                        Teléfonos: {% for item in conf_list %}{{ item.telefono|safe }}{% empty %}{% endfor %}</p>
+                    </div>
+                </div> <!-- END .widget2 -->
+                <div class="widget3">
+                    <br><br><br>
+                    <img src="{{ items.imagen_cuerpo.url }}" alt="{{ items.titulo }}"><br><br>
+                    <div id="maps">
+                        <div id="map">
+                            <iframe width="200" height="200" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://maps.google.com/maps?q={% for item in conf_list %}{{ item.direccion|safe }}{% empty %}{% endfor %}+CP:+{% for item in conf_list %}{{ item.codigo_postal|safe }}{% empty %}{% endfor %},+{% for item in conf_list %}{{ item.ciudad|safe }}{% empty %}{% endfor %}&amp;hl=es&amp;ie=UTF8&amp;view=map&amp;f=d&amp;daddr={% for item in conf_list %}{{ item.direccion|safe }}{% empty %}{% endfor %}+{% for item in conf_list %}{{ item.codigo_postal|safe }}{% empty %}{% endfor %},+{% for item in conf_list %}{{ item.ciudad|safe }}{% empty %}{% endfor %}&amp;geocode=CRjUvk96tb1PFcmSQwIdFKH1_yEPHOwKM48QJA&amp;t=m&amp;ll={{ items.google_maps_coords }}&amp;spn=0.010148,0.012875&amp;z={{ items.google_maps_zoom }}&amp;output=embed"></iframe>
+                            <br>
+                            <small>
+                                <a href="http://maps.google.com/maps?q={% for item in conf_list %}{{ item.direccion|safe }}{% empty %}{% endfor %}+CP:+{% for item in conf_list %}{{ item.codigo_postal|safe }}{% empty %}{% endfor %},+{% for item in conf_list %}{{ item.ciudad|safe }}{% empty %}{% endfor %}&amp;hl=es&amp;ie=UTF8&amp;view=map&amp;f=d&amp;daddr={% for item in conf_list %}{{ item.direccion|safe }}{% empty %}{% endfor %}+CP:+{% for item in conf_list %}{{ item.codigo_postal|safe }}{% empty %}{% endfor %},+{% for item in conf_list %}{{ item.ciudad|safe }}{% empty %}{% endfor %}&amp;geocode=CRjUvk96tb1PFcmSQwIdFKH1_yEPHOwKM48QJA&amp;t=m&amp;ll={{ items.google_maps_coords }}&amp;spn=0.010148,0.012875&amp;z={{ items.google_maps_zoom }}&amp;source=embed" style="color:#666;text-align:left">Ver mapa más grande</a>
+                            </small>
+                        </div>
+                    </div>
+                </div> <!-- END .widget3 -->
+                <div class="clear-all"></div>
+    </div> <!-- END #content -->
+</div> <!-- END #pagebody -->
+{% endblock %}
+{% block extrahead %}{% endblock %}
+{% block metakeywords %}{% for i in metas %}{{ i.palabras_clave }}{% endfor %}{% endblock %}
+{% block metadescription %}{% for i in metas %}{{ i.descripcion }}{% endfor %}{% endblock %}
+{% block metarobots %}{% for i in metas %}{{ i.get_robots_display }}{% endfor %}{% endblock %}

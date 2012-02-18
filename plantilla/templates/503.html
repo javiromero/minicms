@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Sitio en mantenimiento | {{ block.super }}{% endblock %}
+{% block nombre %}Sitio en mantenimiento (503){% endblock %}
+
+{% block contenido %}
+<div id="content">
+    <div id="contact-view">
+	<h1>Sitio en mantenimiento <em>(503)</em></h1>
+        <br>
+	<p>Estamos realizando tareas de mantenimiento en la web. Gracias por su paciencia.</p>
+        <br><br><br>
+    </div>
+</div>
+{% endblock %}
+{% block blockbots %}noindex,follow{% endblock %}

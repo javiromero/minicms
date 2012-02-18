@@ -1,0 +1,284 @@
+body
+{
+	margin:0 auto;
+	padding:0;
+	background:url('../img/bkg-body.jpg') repeat-x left top #f4f5f5;
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:12px;
+	line-height:20px;
+	color:#666;
+	text-align:center;
+	vertical-align:middle;
+}
+#pagebody
+{
+	margin:0 auto;
+	padding:0;
+	text-align:left;
+	width:940px;
+}
+input
+{
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:12px;
+}
+h1, h2, h3, h4, h5, h6, img, p, div, ul, li,table,tr, td
+{
+    padding:0;
+    margin:0;
+}
+h1, h1 span
+{
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:28px;
+    font-weight:bold;
+	color:#000;
+	line-height:normal;
+}
+h1 span, .orange
+{
+	color:#ff0000;
+}
+h2
+{
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:18px;
+	line-height:21px;
+    color:#000;
+	font-weight: bold;
+	padding:0 0 10px 0;
+}
+h3 {
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:16px;
+	line-height:normal;
+    color:#277140;	
+	font-weight: bold;
+}
+h4 {
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:14px;
+	line-height:normal;
+	font-weight: bold;
+}
+h5 {
+	font-family:Helvetica, Arial, Verdana, sans-serif;
+	font-size:12px;
+	color: #000000;
+	font-weight: bold;
+}
+ul
+{
+    padding:0;
+/*     margin:0 0 0 35px; */
+    list-style-position:inside;
+}
+li
+{
+    padding:0;
+}
+img
+{
+    border:none;
+    display:block;
+}
+a
+{
+    text-decoration:none;
+}
+a:hover
+{
+    text-decoration:underline;
+}
+table tr td
+{
+    vertical-align:top;
+    padding:0 0px 8px 0;
+}
+p
+{
+    padding:0 0 10px 0;
+}
+.clear-all
+{
+    clear:both;
+}
+#portal-header
+{
+	margin:0;
+	padding:0;
+    display:block;
+}
+#contact-mail
+{
+    color:#FFF;
+    text-align:right;
+    padding:13px 27px 10px 0;
+}
+#contactnum
+{
+    font-size:18px;
+    font-weight:bold;
+    padding:0 0 0 18px;
+}
+#logo
+{
+    display:block;
+    float:left;
+    padding:0;
+    margin:22px 0 14px 0;
+}
+#logo a
+{
+    display:block;
+    float:left;
+    margin:0 7px 0 0;
+}
+#logo p
+{
+    font-size:22px;
+    font-weight:bold;
+    color:#fff;
+}
+#logo-conner
+{
+    display:block;
+    float:right;
+    width:825px;
+    padding: 15px 0 13px 15px;
+    -webkit-border-radius: 5px 5px;
+    -moz-border-radius: 5px / 5px;
+    -o-border-radius: 5px / 5px;
+    -ms-border-radius: 5px / 5px;
+    -khtml-border-radius: 5px / 5px;
+    border-radius: 5px / 5px;
+}
+#content
+{
+	margin:0;
+	padding:0;
+	background:#fff;
+}
+#contact-view
+{
+    padding:40px 25px 10px 50px;
+}
+#footer
+{
+	padding:10px 100px;
+}
+.widget1, .widget2, .widget3
+{
+    width:340px;
+    float:left;
+    display:block;
+}
+.widget2
+{
+    width:300px;
+}
+.widget3
+{
+    width:225px;
+}
+#maps
+{
+    padding:0;
+}
+#map
+{
+	width:200px;
+    height:200px;
+}
+.info1
+{
+    display:block;
+    padding:0 55px 0 40px;
+}
+.info2
+{
+    display:block;
+    width:250px;
+}
+.bkgright
+{
+    background:url('../img/bkgright.jpg') no-repeat right bottom;
+}
+.precios-top
+{
+    background:url('../img/bkg-precios-top.jpg') no-repeat left top;
+    width:310px;
+    display:block;
+    padding:25px 0 0 0;
+}
+.precios-down
+{
+    background:url('../img/bkg-precios-down.jpg') no-repeat left bottom;
+    width:310px;
+    display:block;
+    padding:0 0 30px 0;
+}
+.precios
+{
+	padding:25px 40px;
+	display:block;
+    width:230px;
+    background:url('../img/bkg-precios.jpg') repeat-y left top;
+	/*margin:20px 0;*/
+}
+.widget-contact
+{
+    display:block;
+    float:right;
+    padding:10px 0 0 0;
+}
+#contact-form-top
+{
+    background:url('../img/bkg-contact-top.jpg') no-repeat left top;
+    width:375px;
+    display:block;
+    padding:10px 0 0 0;
+}
+#contact-form-down
+{
+    background:url('../img/bkg-contact-down.jpg') no-repeat left bottom;
+    width:375px;
+    display:block;
+    padding:0 0 10px 0;
+}
+#contact-form
+{
+	display:block;
+	padding:10px 35px 10px 23px;
+	width:317px; /* 375px */
+	background:url('../img/bkg-contact.jpg') repeat-y left top;
+	font-size:14px;
+}
+#contact-form input.inpForm
+{
+	display:block;
+	border:none;
+	margin:0 0 10px 0;
+	padding:5px 10px;
+	width:297px;
+	color:#666;
+	font-size:14px;
+	background:url('../img/bkg-input.jpg') no-repeat left top;
+	height:24px;
+}
+#contact-form input#checkagree
+{
+	border:none !important;
+	background:#d9d9d9 !important;
+}
+#contact-form input.btn-sentcontact
+{
+	display:block;
+	border:none;
+	margin:0 0 10px 0;
+	font-size:14px;
+	background:#0066ad;
+    color:#fff;
+    width:98%;
+    height:30px;
+}

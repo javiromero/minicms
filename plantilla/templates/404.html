@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Página no encontrada | {{ block.super }}{% endblock %}
+{% block nombre %}Página no encontrada{% endblock %}
+{% block contenido %}
+<div id="content">
+    <div id="contact-view">
+        <h1 class="titulo">Página no encontrada</h1>
+        <br>
+        <p>La página solicitada no existe (Error 404). Puedes volver al <a class="orange" href="/" title="Inicio">Inicio</a> o intentar hacer una búsqueda.</p>
+        <br><br><br>
+    </div>
+</div>
+{% endblock %}
+{% block blockbots %}noindex,follow{% endblock %}

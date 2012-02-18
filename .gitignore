@@ -3,4 +3,6 @@
 *.pyc
 *.svn
 *.hg
+*.json
+*.sqlite
 *settings.py*

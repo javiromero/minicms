@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Server error (500)' %} | {{ block.super }}{% endblock %}
+{% block nombre %}{% trans 'Server error (500)' %}{% endblock %}
+
+{% block contenido %}
+<div id="content">
+    <div id="contact-view">
+	<h1>{% trans 'Server Error <em>(500)</em>' %}</h1>
+        <br>
+	<p>{% trans "There's been an error. It's been reported to the site administrators via e-mail and should be fixed shortly. Thanks for your patience." %}</p>
+        <br><br><br>
+    </div>
+</div>
+{% endblock %}
+{% block blockbots %}noindex,follow{% endblock %}
