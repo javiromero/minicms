@@ -29,19 +29,22 @@
                             var Temail = $("#email").val();
                             var Tsubject = $("#subject").val();
                             var ThisURL = $("#thisURL").val();
-                            var Sandtowho = $("#sandtowho").val();
                             $("#msg").hide();
 
                             if(Tname=='' || Tname=='Nombre')
                             {
                                 $("#name").css({'border':'1px solid red'});
-                                chk = false;                    
+                                chk = false;
+                            } else {
+                                $("#name").css({'border':'0px'});
                             }
                             if(Tsubject=='')
                             {
                                 $("#subject").css({'border':'1px solid red'});
-                                chk = false;                    
-                            }                               
+                                chk = false;
+                            } else {
+                                $("#subject").css({'border':'0px'});
+                            }
                             if(Temail=="")
                             {
                                 $("#email").css({'border':'1px solid red'});
@@ -50,19 +53,23 @@
                                 if(!isValidEmailAddress(Temail))
                                 {
                                         $("#email").css({'border':'1px solid red'});
-                                        chk = false;                    
+                                        chk = false;
+                                } else {
+                                        $("#email").css({'border':'0px'});
                                 }
                             }
                             if(document.sendemail.checkagree.checked != true)
                             {
                                 $("#chkbox").css({'border':'1px solid red'});
                                 chk = false;
+                            } else {
+                                $("#chkbox").css({'border':'0px'});
                             }
                             if(chk){
-                                //$("#sendemail").submit();
+//                                 $("#sendemail").submit();
                                 $(".contento-thank-form").hide();
                                 $(".contento-thank-text").show();
-                                $.get("http://www.thinkmonkeys.com/sendemailHotel", { name: Tname,email: Temail,subject: Tsubject,thisURL:ThisURL,sandtowho:Sandtowho}, 
+                                $.post("/enviar/", { name: Tname, email: Temail, subject: Tsubject, thisURL: ThisURL}, 
                                 function(data) {
                                 });
                             }

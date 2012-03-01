@@ -20,3 +20,8 @@ The project has the following dependencies:
 You can satisfy them using
 
     pip install -r requirements.txt
+
+There are a few migrations to do:
+
+    python manage.py syncdb
+    python manage.py migrate

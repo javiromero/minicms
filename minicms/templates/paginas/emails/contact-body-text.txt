@@ -1,0 +1,8 @@
+Hola, {{ message.name }} acabamos de recibir tu solicitud de más información.
+
+Nombre: {{ message.name }}
+Correo electrónico: {{ message.email }}
+{% if message.subject != 'Teléfono' %}Número de teléfono: {{ message.subject }}{% endif %}
+
+Atentamente {{ current_site.name }}
+http://{{ current_site.domain }}

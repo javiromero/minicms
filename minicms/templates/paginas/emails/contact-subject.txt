@@ -1,0 +1,1 @@
+Mensaje recibido en {{ site_name }}

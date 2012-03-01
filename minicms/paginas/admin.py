@@ -32,7 +32,8 @@ class HomeAdmin(admin.ModelAdmin):
     ordering    = ('site',)
     fieldsets   = [
         (None, {'fields': ['titulo', 'status', 'site']}),
-        ('Texto', {'fields': ['destacado', 'contenido1', 'contenido2', 'contenido3', 'contenido4', 'precios']}),
+        ('Texto', {'fields': ['destacado', 'contenido1', 'contenido2', 'contenido3', 'contenido4', 'contenido5', 'precios']}),
+        ('Formulario', {'fields': ['titulo_form', 'boton_form']}),
         ('Imagenes', {'fields': ['imagen_cabecera', 'imagen_cuerpo']}),
         ('Mapa', {'fields': ['google_maps_coords', 'google_maps_zoom']}),
     ]
@@ -63,6 +64,11 @@ class PageAdmin(admin.ModelAdmin):
         js = ('/estaticos/js/tiny_mce/tiny_mce.js',
               '/estaticos/js/editores/editores.js')
 
+class NotificationEmailInline(admin.StackedInline):
+    model       = NotificationEmail
+    extra       = 1
+    verbose_name = _(u'Correos electrónicos a los que notificar')
+
 class ConfiguracionAdmin(admin.ModelAdmin):
     list_display        = ('site',)
     ordering    = ('site',)
@@ -72,6 +78,10 @@ class ConfiguracionAdmin(admin.ModelAdmin):
         ('Codigos', {'fields': ['google_analytics', 'verificacion_webmaster']}),
         ('Imagenes', {'fields': ['logo']}),
         ('Colores', {'fields': ['color_principal', 'color_secundario']}),
+    ]
+    
+    inlines     = [
+        NotificationEmailInline,
     ]
     
     class Media:

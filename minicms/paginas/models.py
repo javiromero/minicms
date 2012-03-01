@@ -117,8 +117,14 @@ class Home(models.Model):
     contenido2  = models.TextField(verbose_name=_(u'Contenido 2'))
     contenido3  = models.TextField(verbose_name=_(u'Contenido 3'))
     contenido4  = models.TextField(verbose_name=_(u'Contenido 4'))
+    contenido5  = models.TextField(verbose_name=_(u'Contenido 5'), help_text=_(u'Último párrafo para indicar ¿Dónde estamos? o similar'))
     precios     = models.TextField(verbose_name=_(u'Tabla de precios'))
     site        = models.ForeignKey(Site, verbose_name=_(u'Web'), unique=True)
+    
+    
+    # Formulario de contacto
+    titulo_form = models.TextField(verbose_name=_(u'Titulo formulario'), help_text=_(u'Título del formulario de contacto. No se aplicará formato HTML rico.'), default=_(u'¿Quieres más información?'))
+    boton_form  = models.TextField(verbose_name=_(u'Botón formulario'), help_text=_(u'Texto del botón enviar del formulario de contacto. No se aplicará formato HTML rico.'), default=_(u'Enviar'))
     
     # Imagenes
     imagen_cabecera     = ImageField(verbose_name=_(u'Imagen cabecera'), upload_to='cabeceras', default='cabeceras/default.gif')
@@ -144,3 +150,15 @@ class Home(models.Model):
     @models.permalink
     def get_absolute_url(self):
         return ('paginas.views.page', [self.slug])
+
+class NotificationEmail(models.Model):
+    """
+    Email addresses to be notified when contact forms are sent,
+    editable on admin instead of putting them on the settings file
+    """
+    
+    configuracion       = models.ForeignKey(Configuracion, verbose_name=_(u'Configuración'))
+    email               = models.EmailField(verbose_name=_(u'Correo Electrónico'))
+    
+    def __unicode__(self):
+        return self.email

@@ -6,3 +6,4 @@
 *.json
 *.sqlite
 *settings.py*
+*settings.server*

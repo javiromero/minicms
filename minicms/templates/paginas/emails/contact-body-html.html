@@ -1,0 +1,28 @@
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" /> 
+<meta http-equiv="content-language" content="es" />
+</head>
+<body>
+<p>Hola, {{ message.name }} acabamos de recibir tu solicitud de más información.</p>
+
+<table>
+  <tr>
+    <td>Nombre:</td>
+    <td>{{ message.name }}</td>
+  <tr>
+    <td>Correo electrónico:</td>
+    <td> {{ message.email }}</td>
+  </tr>
+{% if message.subject != 'Teléfono' %}
+  <tr>
+    <td>Número de teléfono:</td>
+    <td>{{ message.subject }}</td>
+  </tr>
+{% endif %}
+</table>
+
+
+<p>Atentamente {{ current_site.name }}<br/>
+http://{{ current_site.domain }}</p>
+</body>

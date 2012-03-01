@@ -17,7 +17,6 @@
                         <div class="precios-top">
                             <div class="precios-down">
                                 <div class="precios">
-                                    <h2>Nuestros precios</h2>
                                     {{ items.precios|safe }}
                                 </div>
                             </div>
@@ -31,12 +30,25 @@
                             <div id="contact-form-down">
                                 <div id="contact-form">
                                     <div class="contento-thank-form">
-                                        <form method="post" action="http://www.thinkmonkeys.com/sendemailHotel" id="sendemail" name="sendemail">
-                                            <p class="orange">¿Quieres reservar una habitación?</p>
+                                        <form method="post" action="{% url contacto %}" id="sendemail" name="sendemail">
+                                            <p class="orange">{{ items.titulo_form|striptags }}</p>
                                             <input type="text" id="name" name="name" value="Nombre" class="inpForm" onfocus="clearTextName(this)" onblur="setTextName(this)">
                                             <input type="text" id="email" name="email" value="Email" class="inpForm" onfocus="clearTextEmail(this)" onblur="setTextEmail(this)">
                                             <input type="text" id="subject" name="subject" value="Teléfono" class="inpForm" onfocus="clearTextPhone(this)" onblur="setTextPhone(this)">
-                                            <input type="button" value="Solicitar mi Reserva" class="btn-sentcontact" onclick="_gaq.push(['_trackEvent', 'Contacto', 'Enviado',,, false]);">
+                                            <input type="button" value="{{ items.boton_form|striptags }}" class="btn-sentcontact" onclick="_gaq.push(['_trackEvent', 'Contacto', 'Enviado',,, false]);">
+                                            <div id="chkbox" style="display:block;float:right;">
+                                                <input type="checkbox" id="checkagree" name="checkagree" value="He leido Aviso Legal">
+                                                <span>&nbsp; He leído el </span><span><a href="/aviso-legal/" class="orange">Aviso Legal</a></span>
+                                            </div>
+                                            <input type="hidden" name="thisURL" id="thisURL" value="{{ request.META.HTTP_HOST }}">
+                                        </form>
+                                        {% comment %}
+                                        <form method="post" action="http://www.thinkmonkeys.com/sendemailHotel" id="sendemail" name="sendemail">
+                                            <p class="orange">{{ items.titulo_form|striptags }}</p>
+                                            <input type="text" id="name" name="name" value="Nombre" class="inpForm" onfocus="clearTextName(this)" onblur="setTextName(this)">
+                                            <input type="text" id="email" name="email" value="Email" class="inpForm" onfocus="clearTextEmail(this)" onblur="setTextEmail(this)">
+                                            <input type="text" id="subject" name="subject" value="Teléfono" class="inpForm" onfocus="clearTextPhone(this)" onblur="setTextPhone(this)">
+                                            <input type="button" value="{{ items.boton_form|striptags }}" class="btn-sentcontact" onclick="_gaq.push(['_trackEvent', 'Contacto', 'Enviado',,, false]);">
                                             <div id="chkbox" style="display:block;float:right;">
                                                 <input type="checkbox" id="checkagree" name="checkagree" value="He leido Aviso Legal">
                                                 <span>&nbsp; He leído el </span><span><a href="/aviso-legal/" class="orange">Aviso Legal</a></span>
@@ -44,6 +56,7 @@
                                             <input type="hidden" name="thisURL" id="thisURL" value="http://hoteljuancarlos-torrevieja.míweb.es">
                                             <input type="hidden" name="sandtowho" id="sandtowho" value="steve@thinkmonkeys.com">
                                         </form>
+                                        {% endcomment %}
                                     </div> <!-- END .contento-thank-form -->
 
                                     <div class="clear-all"></div>
@@ -78,12 +91,15 @@
                             {% autoescape off %}
                                 {{ items.contenido3 }}
                                 {{ items.contenido4 }}
+                                {{ items.contenido5 }}
                             {% endautoescape %}
                         {% endautoescape %}
+                        {% comment %}
                         <h2>¿Dónde estamos?</h2>
                         <p>{% for item in conf_list %}{{ item.direccion|safe }}{% empty %}{% endfor %}<br>
                         CP: {% for item in conf_list %}{{ item.codigo_postal|safe }}{% empty %}{% endfor %}, {% for item in conf_list %}{{ item.ciudad|safe }}{% empty %}{% endfor %}<br>
                         Teléfonos: {% for item in conf_list %}{{ item.telefono|safe }}{% empty %}{% endfor %}</p>
+                        {% endcomment %}
                     </div>
                 </div> <!-- END .widget2 -->
                 <div class="widget3">
