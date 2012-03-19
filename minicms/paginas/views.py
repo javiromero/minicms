@@ -62,20 +62,21 @@ def contact(request):
     """
     Vista para notificar las solicitudes de información
     """
-    
-    current_site    = Site.objects.get_current()
-    config          = Configuracion.objects.get(site=current_site)
-    subject         = render_to_string('paginas/emails/contact-subject.txt', {'site_name': current_site.name})
-    text_content    = render_to_string('paginas/emails/contact-body-text.txt', {'message': request.POST, 'current_site': current_site })
-    html_content    = render_to_string('paginas/emails/contact-body-html.html', {'message': request.POST,'current_site': current_site })
-    
-    sender          = 'no-responder@%s' % current_site.domain.replace('www.', '')
-    recipients      = [request.POST['email'], ]
-    cco             = [n.email for n in config.notificationemail_set.all()]
-    
-    msg = EmailMultiAlternatives(subject, text_content, sender, recipients, bcc=cco)
-    msg.attach_alternative(html_content, "text/html")    
-    msg.send()
-    
-    url = urlresolvers.reverse('index')
-    return redirect(url)
+    if request.POST:
+        current_site    = Site.objects.get_current()
+        config          = Configuracion.objects.get(site=current_site)
+        subject         = render_to_string('paginas/emails/contact-subject.txt', {'site_name': current_site.name})
+        text_content    = render_to_string('paginas/emails/contact-body-text.txt', {'message': request.POST, 'current_site': current_site })
+        html_content    = render_to_string('paginas/emails/contact-body-html.html', {'message': request.POST,'current_site': current_site })
+        
+        sender          = 'no-responder@%s' % current_site.domain.replace('www.', '')
+        recipients      = [request.POST['email'], ]
+        cco             = [n.email for n in config.notificationemail_set.all()]
+        
+        msg = EmailMultiAlternatives(subject, text_content, sender, recipients, bcc=cco)
+        msg.attach_alternative(html_content, "text/html")    
+        msg.send()
+        
+    else:
+        url = urlresolvers.reverse('index')
+        return redirect(url)

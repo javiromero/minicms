@@ -1,7 +1,7 @@
 {% load i18n %}
             <div class="clear-all"></div>
             <div id="footer">
-                <p>{# &copy; CMC Medical Group | #}<a class="orange" href="/aviso-legal/" title="Aviso Legal">Aviso Legal</a></p>
+                <p>{# &copy;  | #}<a class="orange" href="/aviso-legal/" title="Aviso Legal">Aviso Legal</a></p>
             </div>
         </div> <!-- END #pagebody -->
         {% get_conf_list %}{% for item in conf_list %}{{ item.google_analytics|safe }}{% empty %}{% endfor %}
@@ -29,19 +29,22 @@
                             var Temail = $("#email").val();
                             var Tsubject = $("#subject").val();
                             var ThisURL = $("#thisURL").val();
-                            var Sandtowho = $("#sandtowho").val();
                             $("#msg").hide();
 
                             if(Tname=='' || Tname=='Nombre')
                             {
                                 $("#name").css({'border':'1px solid red'});
-                                chk = false;                    
+                                chk = false;
+                            } else {
+                                $("#name").css({'border':'0px'});
                             }
                             if(Tsubject=='')
                             {
                                 $("#subject").css({'border':'1px solid red'});
-                                chk = false;                    
-                            }                               
+                                chk = false;
+                            } else {
+                                $("#subject").css({'border':'0px'});
+                            }
                             if(Temail=="")
                             {
                                 $("#email").css({'border':'1px solid red'});
@@ -50,19 +53,23 @@
                                 if(!isValidEmailAddress(Temail))
                                 {
                                         $("#email").css({'border':'1px solid red'});
-                                        chk = false;                    
+                                        chk = false;
+                                } else {
+                                        $("#email").css({'border':'0px'});
                                 }
                             }
                             if(document.sendemail.checkagree.checked != true)
                             {
                                 $("#chkbox").css({'border':'1px solid red'});
                                 chk = false;
+                            } else {
+                                $("#chkbox").css({'border':'0px'});
                             }
                             if(chk){
-                                //$("#sendemail").submit();
+//                                 $("#sendemail").submit();
                                 $(".contento-thank-form").hide();
                                 $(".contento-thank-text").show();
-                                $.get("http://www.thinkmonkeys.com/sendemailHotel", { name: Tname,email: Temail,subject: Tsubject,thisURL:ThisURL,sandtowho:Sandtowho}, 
+                                $.post("/enviar/", { name: Tname, email: Temail, subject: Tsubject, thisURL: ThisURL}, 
                                 function(data) {
                                 });
                             }
@@ -100,18 +107,6 @@
                 if (thefield.value=='')
                 thefield.value = 'Teléfono'
             }
-            {% comment %}
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-28976175-1']);
-            _gaq.push(['_setDomainName', 'míweb.es']);
-            _gaq.push(['_trackPageview']);
-
-            (function() {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-            {% endcomment %}
         </script>
     </body>
 </html>
