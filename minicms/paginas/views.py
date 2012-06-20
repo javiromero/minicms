@@ -10,6 +10,7 @@ from django.conf import settings
 from django.contrib.sites.models import Site
 from django.core import urlresolvers
 from django.core.mail import EmailMultiAlternatives
+from django.http import HttpResponseGone
 from django.shortcuts import render_to_response, get_object_or_404, redirect
 from django import template
 from django.template import RequestContext
@@ -24,7 +25,10 @@ def index(request):
     """
     Vista para home
     """
-    items       = Home.on_site.get(status='p')
+    try:
+        items       = Home.on_site.get(status='p')
+    except:
+        return HttpResponseGone("El sitio que busca ya no se encuentra disponible", content_type="text/plain")
     mark_type   = ContentType.objects.get_for_model(items)
     metas       = Metatag.objects.filter(content_type__pk=mark_type.id, object_id=items.id)
     site        = Site.objects.get_current()
