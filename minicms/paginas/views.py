@@ -77,6 +77,9 @@ def contact(request):
         msg.attach_alternative(html_content, "text/html")    
         msg.send()
         
+        # añadir redirect a página de gracias
+        url = urlresolvers.reverse('index')
+        return redirect(url)
     else:
         url = urlresolvers.reverse('index')
         return redirect(url)
